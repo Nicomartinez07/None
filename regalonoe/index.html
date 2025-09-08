@@ -141,27 +141,29 @@
 				</audio>
 
 			<script>
+				document.addEventListener("DOMContentLoaded", function() {
 					const musica = document.getElementById("musica");
-					const fotosConMusica = document.querySelectorAll(".play-music");
-					const botonesStop = document.querySelectorAll(".stop-music");
+					const playButton = document.querySelector(".play-music");
+					const stopButton = document.querySelector(".stop-music");
 
 					// Reproducir
-					fotosConMusica.forEach(boton => {
-						boton.addEventListener("click", () => {
-						musica.currentTime = 0;
-						musica.play();
+					if (playButton) {
+						playButton.addEventListener("click", (e) => {
+							e.preventDefault();
+							musica.play();
 						});
-					});
+					}
 
 					// Pausar
-					botonesStop.forEach(boton => {
-						boton.addEventListener("click", (e) => {
-						e.preventDefault(); // para que no recargue la página
-						musica.pause();
-						musica.currentTime = 0;
+					if (stopButton) {
+						stopButton.addEventListener("click", (e) => {
+							e.preventDefault();
+							musica.pause();
+							musica.currentTime = 0;
 						});
-					});
-					</script>
+					}
+				});
+			</script>
 
 	</body>
 </html>
